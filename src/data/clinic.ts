@@ -75,11 +75,48 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    id: 'limpeza',
+    icon: 'Droplets',
+    title: 'Limpeza',
+    description:
+      'Profilaxia completa com remoção de tártaro e placa bacteriana, polimento e aplicação de flúor na mesma sessão.',
+    bullets: ['Ultrassom e jato de bicarbonato', 'Aplicação de flúor', 'Orientação de higiene individual'],
+    priceFrom: 'R$ 260',
+  },
+  {
+    id: 'restauracoes',
+    icon: 'Layers',
+    title: 'Restaurações',
+    description:
+      'Reconstrução de dentes com cárie ou fratura em resina composta, com cor ajustada ao esmalte natural.',
+    bullets: ['Resina nanoparticulada', 'Escala de cor individualizada', 'Sem uso de amálgama'],
+    priceFrom: 'R$ 380',
+  },
+  {
+    id: 'proteses',
+    icon: 'Crown',
+    title: 'Próteses Dentárias',
+    description:
+      'Coroas, pontes e próteses fixas ou removíveis para devolver função mastigatória e estética ao sorriso.',
+    bullets: ['Coroas em porcelana e zircônia', 'Prótese fixa sobre implante', 'Ajuste de mordida incluso'],
+    priceFrom: 'R$ 1.600',
+  },
+  {
+    id: 'lentes',
+    icon: 'Gem',
+    title: 'Lentes de Contato',
+    description:
+      'Facetas ultrafinas em porcelana para redesenhar o sorriso com aparência natural e mínimo desgaste.',
+    bullets: ['Ensaio digital antes de iniciar', 'Porcelana importada', 'Mock-up para aprovação'],
+    priceFrom: 'R$ 1.850',
+    highlight: true,
+  },
+  {
     id: 'implantes',
     icon: 'Anchor',
-    title: 'Implantes dentários',
+    title: 'Implantes',
     description:
-      'Reposição de dentes com implantes de titânio, planejamento digital e carga imediata quando indicado.',
+      'Reposição de dentes perdidos com implantes de titânio, planejamento digital e carga imediata quando indicado.',
     bullets: [
       'Cirurgia guiada por computador',
       'Prótese provisória no mesmo dia',
@@ -89,50 +126,31 @@ export const services: Service[] = [
     highlight: true,
   },
   {
-    id: 'lentes',
-    icon: 'Sparkles',
-    title: 'Lentes de contato dental',
+    id: 'cirurgias',
+    icon: 'Syringe',
+    title: 'Cirurgias Orais',
     description:
-      'Facetas ultrafinas em porcelana para redesenhar o sorriso com aparência natural e mínimo desgaste.',
-    bullets: ['Ensaio digital antes de iniciar', 'Porcelana importada', 'Mock-up para aprovação'],
-    priceFrom: 'R$ 1.850',
-  },
-  {
-    id: 'ortodontia',
-    icon: 'Smile',
-    title: 'Ortodontia invisível',
-    description:
-      'Alinhadores transparentes removíveis com acompanhamento digital de cada etapa do tratamento.',
-    bullets: ['Simulação 3D do resultado', 'Sem aparelho metálico', 'Revisões a cada 45 dias'],
-    priceFrom: 'R$ 6.400',
-    highlight: true,
+      'Extrações, remoção de sisos e pequenos procedimentos cirúrgicos com sedação consciente quando indicado.',
+    bullets: ['Remoção de sisos inclusos', 'Sedação consciente disponível', 'Acompanhamento pós-operatório'],
+    priceFrom: 'R$ 650',
   },
   {
     id: 'clareamento',
     icon: 'Sun',
-    title: 'Clareamento dental',
+    title: 'Clareamento',
     description:
       'Protocolos de consultório e caseiro supervisionado, com controle de sensibilidade em todas as sessões.',
     bullets: ['Até 6 tons mais claro', 'Moldeiras personalizadas', 'Kit de manutenção incluso'],
     priceFrom: 'R$ 890',
   },
   {
-    id: 'harmonizacao',
-    icon: 'Wand2',
-    title: 'Harmonização orofacial',
+    id: 'endodontia',
+    icon: 'Microscope',
+    title: 'Endodontia',
     description:
-      'Procedimentos faciais integrados ao sorriso, respeitando as proporções naturais de cada rosto.',
-    bullets: ['Avaliação facial completa', 'Produtos com registro Anvisa', 'Retorno de ajuste incluso'],
-    priceFrom: 'R$ 1.200',
-  },
-  {
-    id: 'prevencao',
-    icon: 'Stethoscope',
-    title: 'Prevenção e periodontia',
-    description:
-      'Limpeza profissional, tratamento de gengiva e planos de manutenção para a família toda.',
-    bullets: ['Profilaxia com ultrassom', 'Aplicação de flúor', 'Plano semestral de acompanhamento'],
-    priceFrom: 'R$ 260',
+      'Tratamento de canal com microscopia operatória, preservando o dente natural e eliminando a dor já na primeira sessão.',
+    bullets: ['Microscópio operatório', 'Instrumentação rotatória', 'Sessão única na maioria dos casos'],
+    priceFrom: 'R$ 780',
   },
 ]
 
@@ -215,16 +233,34 @@ export const priceTable: PriceRow[] = [
     installment: '2x sem juros',
   },
   {
+    procedure: 'Restauração em resina (por dente)',
+    category: 'Restaurador',
+    price: 'R$ 380',
+    installment: '3x sem juros',
+  },
+  {
+    procedure: 'Extração de siso incluso',
+    category: 'Cirurgia',
+    price: 'R$ 650',
+    installment: '4x sem juros',
+  },
+  {
+    procedure: 'Tratamento de canal (por canal)',
+    category: 'Endodontia',
+    price: 'R$ 780',
+    installment: '6x sem juros',
+  },
+  {
     procedure: 'Clareamento em consultório (3 sessões)',
     category: 'Estética',
     price: 'R$ 890',
     installment: '6x sem juros',
   },
   {
-    procedure: 'Restauração em resina (por dente)',
-    category: 'Restaurador',
-    price: 'R$ 380',
-    installment: '3x sem juros',
+    procedure: 'Coroa em porcelana (por dente)',
+    category: 'Prótese',
+    price: 'R$ 1.600',
+    installment: '10x sem juros',
   },
   {
     procedure: 'Lente de contato dental (por dente)',
@@ -237,24 +273,6 @@ export const priceTable: PriceRow[] = [
     category: 'Reabilitação',
     price: 'R$ 2.900',
     installment: '12x sem juros',
-  },
-  {
-    procedure: 'Alinhadores invisíveis (caso completo)',
-    category: 'Ortodontia',
-    price: 'R$ 6.400',
-    installment: '18x sem juros',
-  },
-  {
-    procedure: 'Tratamento de canal (por canal)',
-    category: 'Endodontia',
-    price: 'R$ 780',
-    installment: '6x sem juros',
-  },
-  {
-    procedure: 'Harmonização orofacial (sessão)',
-    category: 'Facial',
-    price: 'R$ 1.200',
-    installment: '4x sem juros',
   },
 ]
 
@@ -303,13 +321,13 @@ export const successCases: SuccessCase[] = [
     id: 'caso-3',
     patient: 'Paciente J.',
     age: 27,
-    treatment: 'Alinhadores invisíveis',
-    duration: '11 meses',
-    sessions: '9 revisões',
+    treatment: 'Endodontia + coroa',
+    duration: '3 semanas',
+    sessions: '4 sessões',
     summary:
-      'Correção de apinhamento anterior e mordida cruzada sem aparelho fixo, com acompanhamento digital mensal.',
-    quote: 'Ninguém no trabalho percebeu que eu estava tratando. Esse era o meu medo.',
-    tags: ['Ortodontia', 'Discreto'],
+      'Tratamento de canal com microscopia em molar fraturado, seguido de coroa em zircônia — dente preservado sem necessidade de extração.',
+    quote: 'Dois dentistas já tinham falado em arrancar. Aqui conseguiram salvar.',
+    tags: ['Endodontia', 'Dente preservado'],
     palette: { before: '#1b1714', after: '#110f0e' },
   },
   {
@@ -357,7 +375,7 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 1 mês',
     text: 'Tenho pavor de dentista desde criança. Fui muito bem acolhido, fizeram tudo no meu ritmo e sem dor. Terminei o implante e voltei para levar minha esposa.',
-    treatment: 'Implante dentário',
+    treatment: 'Implantes',
     accent: '#d8bf7d',
   },
   {
@@ -367,7 +385,7 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 1 mês',
     text: 'Pontualidade que eu nunca vi em clínica. Nunca esperei mais de 5 minutos. O acompanhamento pelo WhatsApp entre as consultas faz muita diferença.',
-    treatment: 'Alinhadores invisíveis',
+    treatment: 'Prótese dentária',
     accent: '#b08d3f',
   },
   {
@@ -387,7 +405,7 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 3 meses',
     text: 'Levo meus dois filhos e eles adoram ir. Equipe com uma paciência enorme com criança. Preço justo e parcelamento que cabe no orçamento da família.',
-    treatment: 'Odontopediatria',
+    treatment: 'Limpeza e prevenção',
     accent: '#a8841c',
   },
   {

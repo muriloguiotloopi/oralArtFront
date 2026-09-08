@@ -46,7 +46,10 @@ export default function Services() {
                 key={service.id}
                 href={whatsappServiceLink(service.title)}
                 {...externalLinkProps}
-                className="group relative flex flex-col border-r border-b border-white/8 p-9 transition duration-500 hover:bg-noir-850 lg:p-11"
+                className={`group relative flex flex-col border-r border-b border-white/8 p-9 transition duration-500 hover:bg-noir-850 lg:p-11 ${
+                  // com 8 tratamentos, o ultimo card fecha a linha de 3 colunas
+                  index === services.length - 1 && services.length % 3 === 2 ? 'lg:col-span-2' : ''
+                }`}
               >
                 <span
                   aria-hidden="true"

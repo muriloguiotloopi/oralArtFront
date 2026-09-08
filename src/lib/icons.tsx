@@ -3,16 +3,18 @@ import {
   Anchor,
   CalendarCheck,
   CreditCard,
+  Crown,
+  Droplets,
   FileText,
+  Gem,
   HeartPulse,
+  Layers,
   Microscope,
   ScanLine,
   ShieldCheck,
-  Smile,
   Sparkles,
-  Stethoscope,
   Sun,
-  Wand2,
+  Syringe,
 } from 'lucide-react'
 
 /**
@@ -23,16 +25,18 @@ const iconMap: Record<string, LucideIcon> = {
   Anchor,
   CalendarCheck,
   CreditCard,
+  Crown,
+  Droplets,
   FileText,
+  Gem,
   HeartPulse,
+  Layers,
   Microscope,
   ScanLine,
   ShieldCheck,
-  Smile,
   Sparkles,
-  Stethoscope,
   Sun,
-  Wand2,
+  Syringe,
 }
 
 export function getIcon(name: string): LucideIcon {
