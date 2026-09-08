@@ -1,111 +1,152 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import 'tailwindcss';
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* ------------------------------------------------------------------
+   Design tokens — estética "noir & gold".
+   Preto quente + dourado champanhe, tipografia serifada de alto
+   contraste (Cormorant) com sans geométrica (Jost) para UI.
+------------------------------------------------------------------- */
+@theme {
+  /* pretos quentes, do mais profundo ao elevado */
+  --color-noir-950: #080807;
+  --color-noir-900: #0b0a09;
+  --color-noir-850: #100e0d;
+  --color-noir-800: #151312;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* dourado */
+  --color-gold-200: #ecdcb0;
+  --color-gold-300: #e3cd96;
+  --color-gold-400: #d8bf7d;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a8841c;
+  --color-gold-700: #7c6115;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  /* neutros de texto */
+  --color-cream-50: #faf7f0;
+  --color-cream-100: #ebe6db;
+  --color-cream-300: #b8b1a4;
+  --color-cream-500: #8c857a;
+
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-gold: 0 30px 70px -35px rgb(201 162 39 / 0.45);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    background-color: var(--color-noir-950);
+  }
 
-body {
-  margin: 0;
-}
+  body {
+    @apply bg-noir-950 font-sans text-cream-300 antialiased;
+    font-weight: 300;
+  }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-cream-50;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  ::selection {
+    @apply bg-gold-500 text-noir-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-gold-500;
+  }
+
+  /* barra de rolagem discreta, no tom da marca */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-noir-900);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-noir-800);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-700);
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+/* Utilitarios proprios — @utility permite reaproveita-los com @apply. */
+@utility container-page {
+  @apply mx-auto w-full max-w-[82rem] px-6 sm:px-10;
+}
+
+@utility section-y {
+  @apply py-24 sm:py-32;
+}
+
+@utility eyebrow {
+  @apply inline-block font-sans text-[0.68rem] font-medium tracking-[0.32em] text-gold-400 uppercase;
+}
+
+@utility gold-text {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-200) 0%,
+    var(--color-gold-500) 45%,
+    var(--color-gold-200) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-3 rounded-[2px] px-8 py-4 font-sans text-[0.72rem] font-medium tracking-[0.2em] uppercase transition duration-300 select-none;
+}
+
+@utility btn-gold {
+  @apply btn border border-gold-500 bg-gold-500 text-noir-950 hover:border-gold-300 hover:bg-gold-300;
+}
+
+@utility btn-outline {
+  @apply btn border border-gold-500/45 bg-transparent text-cream-100 hover:border-gold-400 hover:bg-gold-500/10 hover:text-gold-200;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

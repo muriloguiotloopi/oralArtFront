@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Variaveis de ambiente — NUNCA versionar (GOOGLE_MAPS_API_KEY etc).
+# Em producao as chaves vivem em GitHub Secrets.
+.env
+.env.*
+!.env.example
+
+# Configuracao local de ferramentas do Claude Code
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
