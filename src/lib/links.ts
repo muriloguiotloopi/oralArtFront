@@ -32,6 +32,21 @@ export function mailtoLink(
   )}&body=${encodeURIComponent(body)}`
 }
 
+/* =====================================================================
+   Links do Google — todos derivados do mesmo Place ID (clinic.ts).
+   Um placeid invalido faz o Google responder 404, e uma busca por endereco
+   (maps.google.com/?q=...) abre a area do mapa em vez do perfil da clinica.
+===================================================================== */
+
+/** Formulario "Escrever avaliacao" do perfil da clinica. */
+export const googleReviewUrl = `https://search.google.com/local/writereview?placeid=${siteConfig.googlePlaceId}`
+
+/** Lista completa de avaliacoes do perfil. */
+export const googleReviewsUrl = `https://search.google.com/local/reviews?placeid=${siteConfig.googlePlaceId}`
+
+/** Ficha da clinica no Maps, com o pin exato em vez de uma busca por endereco. */
+export const googleMapsUrl = `https://www.google.com/maps/place/?q=place_id:${siteConfig.googlePlaceId}`
+
 export const fullAddress = `${siteConfig.address.street} — ${siteConfig.address.district}, ${siteConfig.address.city}/${siteConfig.address.state} · CEP ${siteConfig.address.zip}`
 
 /** Props padrao para qualquer link que abre fora do site. */

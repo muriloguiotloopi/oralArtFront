@@ -2,7 +2,7 @@ import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading'
 import { InstagramIcon, WhatsAppIcon } from './ui/BrandIcons'
 import { siteConfig } from '../data/clinic'
-import { externalLinkProps, mailtoLink, telLink, whatsappLink } from '../lib/links'
+import { externalLinkProps, googleMapsUrl, mailtoLink, telLink, whatsappLink } from '../lib/links'
 
 const channels = [
   {
@@ -91,14 +91,14 @@ export default function Contact() {
               Para usar o mapa real, troque este bloco por:
               <iframe
                 title="Localização da clínica"
-                src="https://www.google.com/maps?q=ENDERECO+REAL&output=embed"
+                src={`https://www.google.com/maps?q=place_id:${siteConfig.googlePlaceId}&output=embed`}
                 className="h-60 w-full border-0 grayscale"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             */}
             <a
-              href={siteConfig.googleMapsUrl}
+              href={googleMapsUrl}
               {...externalLinkProps}
               className="group relative flex h-60 items-center justify-center overflow-hidden border-b border-white/8"
               aria-label="Abrir localização no Google Maps"

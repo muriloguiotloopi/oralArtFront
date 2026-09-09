@@ -1,5 +1,6 @@
 import googleDataRaw from '../data/google-reviews.json'
 import { ratingBreakdown, reviews as mockReviews, siteConfig } from '../data/clinic'
+import { googleReviewsUrl } from './links'
 
 /* =====================================================================
    Fonte unica das avaliacoes exibidas na secao de prova social.
@@ -88,7 +89,7 @@ export const reviewsData = {
   reviews: isGoogle ? googleReviews : fallbackReviews,
   rating: isGoogle && googleData.rating ? googleData.rating : siteConfig.googleRating,
   total: isGoogle && googleData.total ? googleData.total : siteConfig.googleReviewCount,
-  profileUrl: (isGoogle && googleData.googleMapsUri) || siteConfig.googleMapsUrl,
+  profileUrl: (isGoogle && googleData.googleMapsUri) || googleReviewsUrl,
   fetchedAt: isGoogle ? googleData.fetchedAt : null,
   /**
    * A Places API nao devolve a distribuicao por estrela. Com dados reais a

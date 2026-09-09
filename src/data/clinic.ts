@@ -19,19 +19,23 @@ export const siteConfig = {
   email: 'contato@odontoprime.com.br', // TODO
   instagramHandle: '@odontoprime',
   instagramUrl: 'https://instagram.com/', // TODO: perfil real
+  // TODO: endereco real da clinica (hoje aponta para um perfil real do Google,
+  // so para que os links da secao de avaliacoes funcionem na demonstracao)
   address: {
-    street: 'Av. Exemplo, 1.234 — Conj. 78',
-    district: 'Asa Norte',
-    city: 'Brasília | DF',
-    state: 'SP',
-    zip: '01000-000',
+    street: 'SGAS 616, Bloco B — Loja 05',
+    district: 'Asa Sul',
+    city: 'Brasília',
+    state: 'DF',
+    zip: '70200-760',
   },
-  // TODO: substituir pelo link "Escrever avaliacao" do perfil do Google
-  // (Google Business Profile > Compartilhar formulario de avaliacao)
-  googleReviewUrl: 'https://search.google.com/local/writereview?placeid=SEU_PLACE_ID',
-  googleMapsUrl: 'https://maps.google.com/?q=Av.+Exemplo+1234+Sao+Paulo',
+  /* TODO: Place ID do perfil do cliente no Google.
+     Como obter: Google Business Profile > Compartilhar formulario de avaliacao,
+     ou https://developers.google.com/maps/documentation/places/place-id
+     Todos os links do Google (avaliar, ver avaliacoes e rota) saem daqui —
+     ver googleReviewUrl / googleReviewsUrl / googleMapsUrl em src/lib/links.ts. */
+  googlePlaceId: 'ChIJ4Q-PspslWpMRA4HHchneeCU',
   googleRating: 4.9,
-  googleReviewCount: 327,
+  googleReviewCount: 826,
   hours: [
     { day: 'Segunda a sexta', time: '08h — 20h' },
     { day: 'Sábado', time: '08h — 14h' },

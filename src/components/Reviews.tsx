@@ -2,9 +2,8 @@ import { ArrowUpRight, PenLine } from 'lucide-react'
 import SectionHeading from './ui/SectionHeading'
 import Stars from './ui/Stars'
 import GoogleG from './ui/GoogleG'
-import { siteConfig } from '../data/clinic'
 import { formatFetchedAt, reviewsData } from '../lib/googleReviews'
-import { externalLinkProps } from '../lib/links'
+import { externalLinkProps, googleReviewUrl } from '../lib/links'
 
 export default function Reviews() {
   const { source, reviews, rating, total, profileUrl, breakdown, fetchedAt } = reviewsData
@@ -63,9 +62,8 @@ export default function Reviews() {
             ) : null}
 
             <div className="mt-9 space-y-3">
-              {/* TODO: trocar googleReviewUrl (clinic.ts) pelo link real de avaliacao */}
               <a
-                href={siteConfig.googleReviewUrl}
+                href={googleReviewUrl}
                 {...externalLinkProps}
                 className="btn-gold w-full px-6"
               >
