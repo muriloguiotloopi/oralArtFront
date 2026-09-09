@@ -136,8 +136,12 @@ export default function Footer() {
         <div className="container-page flex flex-col gap-3 py-7 pb-28 font-sans text-[0.6rem] tracking-[0.16em] text-cream-500 uppercase sm:flex-row sm:items-center sm:justify-between sm:pr-56 sm:pb-7">
           <p>
             © {year} {siteConfig.legalName} · {siteConfig.cro}
+            <span className="mt-1 block">
+              Responsável técnico: {siteConfig.technicalDirector.name} —{' '}
+              {siteConfig.technicalDirector.title} · {siteConfig.technicalDirector.cro}
+            </span>
           </p>
-          <p>Layout demonstrativo — conteúdo e valores ilustrativos</p>
+          <p>Layout demonstrativo — conteúdo ilustrativo</p>
         </div>
       </div>
     </footer>

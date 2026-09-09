@@ -10,8 +10,15 @@
 export const siteConfig = {
   name: 'Odonto Prime',
   legalName: 'Odonto Prime Odontologia Especializada',
-  tagline: 'Odontologia estética de alto padrão',
-  cro: 'CRO/SP 00000', // TODO: registro real da clinica
+  tagline: 'Odontologia estética e reabilitadora',
+  cro: 'CRO/DF 00000', // TODO: registro real da clinica
+  /* Identificacao exigida pela Resolucao CFO-196/2019: anuncio de pessoa
+     juridica precisa trazer nome e CRO do responsavel tecnico. */
+  technicalDirector: {
+    name: 'Dr. Nome Sobrenome', // TODO
+    cro: 'CRO/DF 00000', // TODO
+    title: 'Cirurgião-Dentista',
+  },
   phoneLabel: '(11) 4000-0000', // TODO
   phoneRaw: '+551140000000', // TODO
   whatsappNumber: '5511900000000', // TODO: apenas digitos, com DDI + DDD
@@ -46,9 +53,9 @@ export const siteConfig = {
 export const navLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Serviços', href: '#servicos' },
-  { label: 'Valores', href: '#valores' },
+  { label: 'Consultas', href: '#consultas' },
   { label: 'Convênios', href: '#convenios' },
-  { label: 'Resultados', href: '#casos' },
+  { label: 'Protocolos', href: '#protocolos' },
   { label: 'Avaliações', href: '#avaliacoes' },
   { label: 'Contato', href: '#contato' },
 ] as const
@@ -58,14 +65,14 @@ export const trustBadges = [
   { icon: 'ShieldCheck', label: 'Biossegurança nível hospitalar' },
   { icon: 'ScanLine', label: 'Scanner intraoral 3D' },
   { icon: 'HeartPulse', label: 'Atendimento humanizado' },
-  { icon: 'CreditCard', label: 'Parcelamos em até 12x' },
+  { icon: 'GraduationCap', label: 'Equipe de especialistas' },
 ] as const
 
 export const stats = [
   { value: '12', suffix: ' anos', label: 'de história na região' },
-  { value: '100', suffix: '+', label: 'sorrisos transformados' },
+  { value: '8', suffix: '', label: 'especialidades no mesmo lugar' },
   { value: '4,9', suffix: '/5', label: 'no Google Reviews' },
-  { value: '96', suffix: '%', label: 'de pacientes por indicação' },
+  { value: '6', suffix: ' dias', label: 'de atendimento por semana' },
 ] as const
 
 export type Service = {
@@ -74,7 +81,6 @@ export type Service = {
   title: string
   description: string
   bullets: string[]
-  priceFrom: string
   highlight?: boolean
 }
 
@@ -86,7 +92,6 @@ export const services: Service[] = [
     description:
       'Profilaxia completa com remoção de tártaro e placa bacteriana, polimento e aplicação de flúor na mesma sessão.',
     bullets: ['Ultrassom e jato de bicarbonato', 'Aplicação de flúor', 'Orientação de higiene individual'],
-    priceFrom: 'R$ 260',
   },
   {
     id: 'restauracoes',
@@ -95,7 +100,6 @@ export const services: Service[] = [
     description:
       'Reconstrução de dentes com cárie ou fratura em resina composta, com cor ajustada ao esmalte natural.',
     bullets: ['Resina nanoparticulada', 'Escala de cor individualizada', 'Sem uso de amálgama'],
-    priceFrom: 'R$ 380',
   },
   {
     id: 'proteses',
@@ -104,7 +108,6 @@ export const services: Service[] = [
     description:
       'Coroas, pontes e próteses fixas ou removíveis para devolver função mastigatória e estética ao sorriso.',
     bullets: ['Coroas em porcelana e zircônia', 'Prótese fixa sobre implante', 'Ajuste de mordida incluso'],
-    priceFrom: 'R$ 1.600',
   },
   {
     id: 'lentes',
@@ -113,7 +116,6 @@ export const services: Service[] = [
     description:
       'Facetas ultrafinas em porcelana para redesenhar o sorriso com aparência natural e mínimo desgaste.',
     bullets: ['Ensaio digital antes de iniciar', 'Porcelana importada', 'Mock-up para aprovação'],
-    priceFrom: 'R$ 1.850',
     highlight: true,
   },
   {
@@ -125,9 +127,8 @@ export const services: Service[] = [
     bullets: [
       'Cirurgia guiada por computador',
       'Prótese provisória no mesmo dia',
-      'Garantia estendida',
+      'Controle radiográfico periódico',
     ],
-    priceFrom: 'R$ 2.900',
     highlight: true,
   },
   {
@@ -137,7 +138,6 @@ export const services: Service[] = [
     description:
       'Extrações, remoção de sisos e pequenos procedimentos cirúrgicos com sedação consciente quando indicado.',
     bullets: ['Remoção de sisos inclusos', 'Sedação consciente disponível', 'Acompanhamento pós-operatório'],
-    priceFrom: 'R$ 650',
   },
   {
     id: 'clareamento',
@@ -145,17 +145,15 @@ export const services: Service[] = [
     title: 'Clareamento',
     description:
       'Protocolos de consultório e caseiro supervisionado, com controle de sensibilidade em todas as sessões.',
-    bullets: ['Até 6 tons mais claro', 'Moldeiras personalizadas', 'Kit de manutenção incluso'],
-    priceFrom: 'R$ 890',
+    bullets: ['Controle de sensibilidade', 'Moldeiras personalizadas', 'Kit de manutenção incluso'],
   },
   {
     id: 'endodontia',
     icon: 'Microscope',
     title: 'Endodontia',
     description:
-      'Tratamento de canal com microscopia operatória, preservando o dente natural e eliminando a dor já na primeira sessão.',
-    bullets: ['Microscópio operatório', 'Instrumentação rotatória', 'Sessão única na maioria dos casos'],
-    priceFrom: 'R$ 780',
+      'Tratamento de canal com microscopia operatória, com foco em preservar o dente natural.',
+    bullets: ['Microscópio operatório', 'Instrumentação rotatória', 'Acompanhamento radiográfico'],
   },
 ]
 
@@ -163,28 +161,24 @@ export type ConsultationPlan = {
   id: string
   name: string
   description: string
-  price: string
-  priceNote: string
   duration: string
   features: string[]
   featured?: boolean
   ctaLabel: string
 }
 
-/** Tipos de consulta / tabela de valores base. */
+/** Tipos de consulta oferecidos. */
 export const consultationPlans: ConsultationPlan[] = [
   {
     id: 'avaliacao',
     name: 'Avaliação inicial',
     description: 'Primeiro contato para entender sua queixa e mapear as possibilidades.',
-    price: 'Gratuita',
-    priceNote: 'primeira visita',
     duration: '40 min',
     features: [
       'Exame clínico completo',
       'Fotografias intraorais',
       'Plano de tratamento por escrito',
-      'Simulação de valores e parcelas',
+      'Espaço para tirar todas as dúvidas',
     ],
     ctaLabel: 'Agendar avaliação',
   },
@@ -192,8 +186,6 @@ export const consultationPlans: ConsultationPlan[] = [
     id: 'diagnostico',
     name: 'Diagnóstico digital',
     description: 'Escaneamento 3D e planejamento reverso para casos estéticos e reabilitações.',
-    price: 'R$ 390',
-    priceNote: 'abatido no tratamento',
     duration: '1h 15min',
     features: [
       'Scanner intraoral 3D',
@@ -209,8 +201,6 @@ export const consultationPlans: ConsultationPlan[] = [
     id: 'urgencia',
     name: 'Urgência odontológica',
     description: 'Encaixe no mesmo dia para dor, trauma ou restauração que soltou.',
-    price: 'R$ 250',
-    priceNote: 'consulta de urgência',
     duration: '30 min',
     features: [
       'Atendimento no mesmo dia',
@@ -222,64 +212,21 @@ export const consultationPlans: ConsultationPlan[] = [
   },
 ]
 
-export type PriceRow = {
-  procedure: string
-  category: string
-  price: string
-  installment: string
-}
-
-/** Tabela de valores base — referencia inicial, sujeita a avaliacao. */
-export const priceTable: PriceRow[] = [
+/** Passo a passo do orcamento — substitui a antiga tabela de valores. */
+export const budgetSteps = [
   {
-    procedure: 'Limpeza + profilaxia completa',
-    category: 'Prevenção',
-    price: 'R$ 260',
-    installment: '2x sem juros',
+    title: 'Avaliação clínica',
+    text: 'Exame completo, fotografias intraorais e, quando indicado, escaneamento 3D para entender o seu caso.',
   },
   {
-    procedure: 'Restauração em resina (por dente)',
-    category: 'Restaurador',
-    price: 'R$ 380',
-    installment: '3x sem juros',
+    title: 'Plano por escrito',
+    text: 'Você recebe o plano de tratamento com procedimentos, número de sessões e os valores fechados de cada etapa.',
   },
   {
-    procedure: 'Extração de siso incluso',
-    category: 'Cirurgia',
-    price: 'R$ 650',
-    installment: '4x sem juros',
+    title: 'Aprovação antes de iniciar',
+    text: 'Nada começa sem o seu aval. As condições de pagamento são combinadas nessa mesma conversa.',
   },
-  {
-    procedure: 'Tratamento de canal (por canal)',
-    category: 'Endodontia',
-    price: 'R$ 780',
-    installment: '6x sem juros',
-  },
-  {
-    procedure: 'Clareamento em consultório (3 sessões)',
-    category: 'Estética',
-    price: 'R$ 890',
-    installment: '6x sem juros',
-  },
-  {
-    procedure: 'Coroa em porcelana (por dente)',
-    category: 'Prótese',
-    price: 'R$ 1.600',
-    installment: '10x sem juros',
-  },
-  {
-    procedure: 'Lente de contato dental (por dente)',
-    category: 'Estética',
-    price: 'R$ 1.850',
-    installment: '12x sem juros',
-  },
-  {
-    procedure: 'Implante unitário + prótese',
-    category: 'Reabilitação',
-    price: 'R$ 2.900',
-    installment: '12x sem juros',
-  },
-]
+] as const
 
 export type InsurancePlan = {
   id: string
@@ -317,12 +264,7 @@ export const insurancePlans: InsurancePlan[] = [
     operator: 'AESP Odonto',
     description:
       'Operadora com mais de 25 anos de mercado e rede credenciada em todo o Brasil, forte em planos coletivos por adesão e empresariais. O atendimento segue a cobertura prevista no seu contrato, conferida antes da primeira consulta.',
-    coverage: [
-      'Consulta e avaliação',
-      'Radiografias',
-      'Tratamento de gengiva',
-      'Extrações simples',
-    ],
+    coverage: ['Consulta e avaliação', 'Radiografias', 'Tratamento de gengiva', 'Extrações simples'],
   },
   {
     id: 'odontoprev',
@@ -364,72 +306,54 @@ export const insuranceSteps = [
   },
 ] as const
 
+/* Protocolos clinicos descritos sem imagem de antes/depois, sem identificacao
+   do paciente e sem depoimento: a Resolucao CFO-196/2019 reserva esse tipo de
+   divulgacao ao proprio profissional executor, nao a pessoa juridica. */
 export type SuccessCase = {
   id: string
-  patient: string
-  age: number
   treatment: string
   duration: string
   sessions: string
   summary: string
-  quote: string
   tags: string[]
-  /** Tons usados no placeholder visual — troque por fotos reais depois. */
-  palette: { before: string; after: string }
 }
 
 export const successCases: SuccessCase[] = [
   {
     id: 'caso-1',
-    patient: 'Paciente M.',
-    age: 34,
     treatment: 'Lentes de contato dental',
     duration: '3 semanas',
     sessions: '4 sessões',
     summary:
       'Reanatomização de 10 dentes superiores com fechamento de diastema e correção de desgaste no incisivo central.',
-    quote: 'Eu sorria de boca fechada em todas as fotos. Hoje não penso mais nisso.',
     tags: ['Estética', 'Mínimo desgaste'],
-    palette: { before: '#1a1613', after: '#100f0d' },
   },
   {
     id: 'caso-2',
-    patient: 'Paciente R.',
-    age: 52,
     treatment: 'Reabilitação com implantes',
     duration: '5 meses',
     sessions: '7 sessões',
     summary:
       'Substituição de prótese removível por protocolo fixo sobre 6 implantes, com carga imediata no dia da cirurgia.',
-    quote: 'Voltei a comer o que eu quiser sem medo. A diferença é diária.',
     tags: ['Reabilitação', 'Carga imediata'],
-    palette: { before: '#191512', after: '#0f0e0d' },
   },
   {
     id: 'caso-3',
-    patient: 'Paciente J.',
-    age: 27,
     treatment: 'Endodontia + coroa',
     duration: '3 semanas',
     sessions: '4 sessões',
     summary:
       'Tratamento de canal com microscopia em molar fraturado, seguido de coroa em zircônia — dente preservado sem necessidade de extração.',
-    quote: 'Dois dentistas já tinham falado em arrancar. Aqui conseguiram salvar.',
     tags: ['Endodontia', 'Dente preservado'],
-    palette: { before: '#1b1714', after: '#110f0e' },
   },
   {
     id: 'caso-4',
-    patient: 'Paciente A.',
-    age: 41,
     treatment: 'Clareamento + restaurações',
     duration: '1 mês',
     sessions: '5 sessões',
     summary:
       'Clareamento combinado e troca de restaurações antigas escurecidas nos dentes anteriores superiores.',
-    quote: 'Achei que precisaria de lente. Resolvemos com muito menos do que eu imaginava.',
     tags: ['Estética', 'Conservador'],
-    palette: { before: '#18140f', after: '#0f0e0c' },
   },
 ]
 
@@ -440,7 +364,6 @@ export type Review = {
   rating: number
   timeAgo: string
   text: string
-  treatment: string
   accent: string
 }
 
@@ -453,7 +376,6 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 2 semanas',
     text: 'Atendimento impecável do começo ao fim. Me explicaram cada etapa, o orçamento veio por escrito e não teve nenhuma surpresa depois. A clínica é impecavelmente limpa.',
-    treatment: 'Lentes de contato dental',
     accent: '#c9a227',
   },
   {
@@ -463,7 +385,6 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 1 mês',
     text: 'Tenho pavor de dentista desde criança. Fui muito bem acolhido, fizeram tudo no meu ritmo e sem dor. Terminei o implante e voltei para levar minha esposa.',
-    treatment: 'Implantes',
     accent: '#d8bf7d',
   },
   {
@@ -473,7 +394,6 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 1 mês',
     text: 'Pontualidade que eu nunca vi em clínica. Nunca esperei mais de 5 minutos. O acompanhamento pelo WhatsApp entre as consultas faz muita diferença.',
-    treatment: 'Prótese dentária',
     accent: '#b08d3f',
   },
   {
@@ -483,7 +403,6 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 2 meses',
     text: 'Cheguei de urgência num sábado com muita dor e fui atendido em menos de uma hora. Resolveram na hora e ainda organizaram o tratamento completo depois.',
-    treatment: 'Urgência odontológica',
     accent: '#e3cd96',
   },
   {
@@ -492,8 +411,7 @@ export const reviews: Review[] = [
     initials: 'PL',
     rating: 5,
     timeAgo: 'há 3 meses',
-    text: 'Levo meus dois filhos e eles adoram ir. Equipe com uma paciência enorme com criança. Preço justo e parcelamento que cabe no orçamento da família.',
-    treatment: 'Limpeza e prevenção',
+    text: 'Levo meus dois filhos e eles adoram ir. Equipe com uma paciência enorme com criança. Explicam cada etapa para eles antes de começar.',
     accent: '#a8841c',
   },
   {
@@ -503,7 +421,6 @@ export const reviews: Review[] = [
     rating: 5,
     timeAgo: 'há 4 meses',
     text: 'A simulação digital antes de começar me deu total segurança. Vi o resultado antes de gastar um real. Ficou exatamente como no planejamento.',
-    treatment: 'Diagnóstico digital',
     accent: '#cbb26a',
   },
 ]

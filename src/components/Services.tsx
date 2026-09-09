@@ -94,11 +94,12 @@ export default function Services() {
 
                 <div className="mt-auto flex items-end justify-between gap-4 pt-9">
                   <p>
+                    {/* CFO-196/2019: valores so no orcamento individual, nunca no anuncio. */}
                     <span className="block font-sans text-[0.58rem] tracking-[0.22em] text-cream-500 uppercase">
-                      a partir de
+                      orçamento
                     </span>
-                    <span className="mt-1.5 block font-display text-2xl text-cream-50">
-                      {service.priceFrom}
+                    <span className="mt-1.5 block font-display text-xl text-cream-50">
+                      após avaliação
                     </span>
                   </p>
                   <span className="flex size-10 items-center justify-center rounded-full border border-white/12 text-gold-400 transition duration-500 group-hover:border-gold-500 group-hover:bg-gold-500 group-hover:text-noir-950">

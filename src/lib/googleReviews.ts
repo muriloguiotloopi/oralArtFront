@@ -47,8 +47,6 @@ export type DisplayReview = {
   rating: number
   timeAgo: string
   text: string
-  /** So existe nos depoimentos mock — a API do Google nao devolve isso. */
-  treatment: string | null
   accent: string
 }
 
@@ -66,7 +64,6 @@ const googleReviews: DisplayReview[] = googleData.reviews.map((review, index) =>
   rating: review.rating,
   timeAgo: review.timeAgo,
   text: review.text,
-  treatment: null,
   accent: ACCENTS[index % ACCENTS.length],
 }))
 
@@ -79,7 +76,6 @@ const fallbackReviews: DisplayReview[] = mockReviews.map((review) => ({
   rating: review.rating,
   timeAgo: review.timeAgo,
   text: review.text,
-  treatment: review.treatment,
   accent: review.accent,
 }))
 

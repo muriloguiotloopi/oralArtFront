@@ -125,8 +125,8 @@ export default function Insurance() {
             <Info size={14} className="mt-0.5 shrink-0 text-gold-600" aria-hidden="true" />
             Coberturas, carências e reembolsos seguem o contrato de cada operadora. Procedimentos
             estéticos — lentes de contato dental, clareamento e implantes, por exemplo — costumam
-            ficar fora da cobertura e seguem a tabela particular, sempre com o valor fechado por
-            escrito antes de iniciar.
+            ficar fora da cobertura e seguem orçamento particular, apresentado por escrito antes
+            de iniciar.
           </p>
 
           <div className="flex flex-col gap-5 border-t border-white/8 px-7 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10">

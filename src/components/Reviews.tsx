@@ -138,11 +138,6 @@ export default function Reviews() {
                   {review.text}
                 </p>
 
-                {review.treatment ? (
-                  <span className="mt-6 font-sans text-[0.58rem] tracking-[0.2em] text-gold-500 uppercase">
-                    {review.treatment}
-                  </span>
-                ) : null}
               </li>
             ))}
           </ul>

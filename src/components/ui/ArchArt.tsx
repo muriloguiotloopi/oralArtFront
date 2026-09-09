@@ -5,7 +5,7 @@ const TOOTH_COUNT = 14
 /**
  * Emblema da arcada dentária em traço fino dourado — visual do hero.
  *
- * PLACEHOLDER de alto padrão: substitui a foto do cliente sem parecer
+ * PLACEHOLDER editorial: substitui a foto do cliente sem parecer
  * inacabado. Para usar foto real, troque este componente por
  * <img className="size-full object-cover" … /> dentro da mesma moldura.
  */

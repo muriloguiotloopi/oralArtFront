@@ -28,8 +28,8 @@ export default function Hero() {
           </h1>
 
           <p className="mt-8 max-w-lg text-base leading-[1.95] font-light text-cream-500">
-            Odontologia estética e reabilitadora com planejamento digital. Você aprova a simulação
-            do resultado e recebe o orçamento fechado antes de qualquer procedimento começar.
+            Odontologia estética e reabilitadora com planejamento digital. Você acompanha cada
+            etapa do plano e recebe o orçamento por escrito antes de qualquer procedimento começar.
           </p>
 
           <div className="mt-11 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -69,12 +69,20 @@ export default function Hero() {
             </div>
           </div>
 
+          {/*
+            Identificacao do responsavel tecnico, exigida pela CFO-196/2019 em
+            anuncio de pessoa juridica. Ocupa o lugar do antigo selo de
+            parcelamento, que era oferta comercial.
+          */}
           <div className="absolute bottom-28 -left-5 hidden border border-gold-700/45 bg-noir-900/95 px-6 py-4 backdrop-blur sm:block lg:animate-float">
             <p className="font-sans text-[0.58rem] tracking-[0.24em] text-cream-500 uppercase">
-              Parcelamos em
+              Responsável técnico
             </p>
-            <p className="mt-1.5 font-display text-2xl text-cream-50">
-              12x <span className="text-gold-400 italic">sem juros</span>
+            <p className="mt-1.5 font-display text-xl text-cream-50">
+              {siteConfig.technicalDirector.name}
+            </p>
+            <p className="mt-1 font-sans text-[0.58rem] tracking-[0.2em] text-gold-400 uppercase">
+              {siteConfig.technicalDirector.cro}
             </p>
           </div>
         </div>
