@@ -47,6 +47,7 @@ export const navLinks = [
   { label: 'Início', href: '#inicio' },
   { label: 'Serviços', href: '#servicos' },
   { label: 'Valores', href: '#valores' },
+  { label: 'Convênios', href: '#convenios' },
   { label: 'Resultados', href: '#casos' },
   { label: 'Avaliações', href: '#avaliacoes' },
   { label: 'Contato', href: '#contato' },
@@ -279,6 +280,89 @@ export const priceTable: PriceRow[] = [
     installment: '12x sem juros',
   },
 ]
+
+export type InsurancePlan = {
+  id: string
+  name: string
+  /** Operadora/grupo responsavel — o paciente costuma reconhecer o plano pela marca. */
+  operator: string
+  /** Marcas do mesmo grupo atendidas pelo mesmo credenciamento. */
+  brands?: string[]
+  description: string
+  /** Procedimentos cobertos — todos dentro do Rol obrigatorio da ANS. */
+  coverage: string[]
+}
+
+/* TODO: confirmar com o cliente o credenciamento ativo, as carencias e os
+   planos especificos de cada operadora antes de publicar.
+   Os logos oficiais entram no lugar do texto do "cartao" em Insurance.tsx —
+   pedir os arquivos e a autorizacao de uso a cada operadora. */
+export const insurancePlans: InsurancePlan[] = [
+  {
+    id: 'amil',
+    name: 'Amil Dental',
+    operator: 'Grupo Amil',
+    description:
+      'Uma das maiores carteiras odontológicas do país, com planos individuais, familiares e empresariais. Atendemos as linhas mais comuns da Amil Dental e cuidamos da autorização dos procedimentos aqui mesmo, sem que você precise ligar para a operadora.',
+    coverage: [
+      'Consulta e diagnóstico',
+      'Limpeza e prevenção',
+      'Restaurações em resina',
+      'Urgência odontológica',
+    ],
+  },
+  {
+    id: 'aesp',
+    name: 'AESP Odonto',
+    operator: 'AESP Odonto',
+    description:
+      'Operadora com mais de 25 anos de mercado e rede credenciada em todo o Brasil, forte em planos coletivos por adesão e empresariais. O atendimento segue a cobertura prevista no seu contrato, conferida antes da primeira consulta.',
+    coverage: [
+      'Consulta e avaliação',
+      'Radiografias',
+      'Tratamento de gengiva',
+      'Extrações simples',
+    ],
+  },
+  {
+    id: 'odontoprev',
+    name: 'OdontoPrev',
+    operator: 'Grupo OdontoPrev',
+    brands: ['Bradesco Dental', 'BB Dental'],
+    description:
+      'Maior grupo odontológico da América Latina. As carteiras Bradesco Dental e BB Dental são operadas pela OdontoPrev e atendidas pelo mesmo credenciamento — se o seu cartão traz qualquer uma dessas três marcas, o atendimento aqui é o mesmo.',
+    coverage: [
+      'Consulta e diagnóstico',
+      'Profilaxia e flúor',
+      'Tratamento de canal',
+      'Urgência odontológica',
+    ],
+  },
+  {
+    id: 'odontogroup',
+    name: 'OdontoGroup',
+    operator: 'OdontoGroup',
+    description:
+      'Operadora sediada em Brasília, com mais de 27 anos de atuação e presença consolidada nos planos de servidores públicos do DF. A carteirinha digital e a autorização pelo aplicativo encurtam o caminho entre a avaliação e o início do tratamento.',
+    coverage: ['Consulta e diagnóstico', 'Radiografias', 'Restaurações', 'Cirurgia oral menor'],
+  },
+]
+
+/** Passo a passo exibido abaixo dos convenios. */
+export const insuranceSteps = [
+  {
+    title: 'Confirme seu plano',
+    text: 'Mande uma foto da carteirinha pelo WhatsApp. A recepção confere cobertura e carências antes de você sair de casa.',
+  },
+  {
+    title: 'Agende a consulta',
+    text: 'Marcamos o horário e já deixamos encaminhada a autorização dos procedimentos previstos na avaliação.',
+  },
+  {
+    title: 'Traga documento e cartão',
+    text: 'No dia, basta o cartão do convênio — físico ou digital — e um documento com foto. O resto é com a gente.',
+  },
+] as const
 
 export type SuccessCase = {
   id: string

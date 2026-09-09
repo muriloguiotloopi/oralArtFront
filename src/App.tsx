@@ -2,6 +2,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import Pricing from './components/Pricing'
+import Insurance from './components/Insurance'
 import Cases from './components/Cases'
 import Reviews from './components/Reviews'
 import Contact from './components/Contact'
@@ -24,6 +25,7 @@ export default function App() {
         <Hero />
         <Services />
         <Pricing />
+        <Insurance />
         <Cases />
         <Reviews />
         <Contact />
