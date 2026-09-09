@@ -15,10 +15,10 @@ export default function Reviews() {
     <section id="avaliacoes" className="section-y bg-noir-950">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Prova social"
-          title="O que dizem quem já sentou na"
-          accent="nossa cadeira"
-          description="Depoimentos publicados por pacientes no perfil da clínica no Google. Nada é editado — leia na fonte e, se você já é paciente, deixe também a sua."
+          eyebrow="Feedbacks"
+          title="O que nossos"
+          accent="pacientes dizem"
+          description="Depoimentos publicados por pacientes no perfil da clínica no Google. Nada é editado — leia na fonte e, se você já foi nosso cliente, deixe também a sua."
         />
 
         <div className="mt-20 grid gap-14 lg:grid-cols-[20rem_1fr] lg:items-start lg:gap-16">
