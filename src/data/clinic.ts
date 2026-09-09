@@ -316,9 +316,39 @@ export type SuccessCase = {
   sessions: string
   summary: string
   tags: string[]
+  /** Protocolo principal — a especialidade da clinica, exibido em destaque. */
+  featured?: boolean
+  /** Etapas exibidas apenas no protocolo em destaque. */
+  steps?: string[]
 }
 
 export const successCases: SuccessCase[] = [
+  {
+    id: 'reabilitacao-oral',
+    treatment: 'Reabilitação oral completa',
+    duration: '5 meses',
+    sessions: '7 sessões',
+    summary:
+      'Substituição de prótese removível por protocolo fixo sobre 6 implantes, com carga imediata no dia da cirurgia. É o tratamento que mais conduzimos: devolve mastigação, fala e proporção facial em um plano único, do diagnóstico à manutenção.',
+    tags: ['Especialidade da clínica', 'Carga imediata'],
+    featured: true,
+    steps: [
+      'Tomografia e planejamento digital da arcada',
+      'Cirurgia guiada com instalação dos implantes',
+      'Prótese provisória fixa no mesmo dia',
+      'Prótese definitiva após a osseointegração',
+      'Manutenção periódica acompanhada pela equipe',
+    ],
+  },
+  {
+    id: 'reabilitacao-posterior',
+    treatment: 'Reabilitação posterior',
+    duration: '4 meses',
+    sessions: '6 sessões',
+    summary:
+      'Recuperação da mastigação com implantes unitários e coroas em zircônia na região dos molares, devolvendo altura de mordida e redistribuindo a força sobre os dentes remanescentes.',
+    tags: ['Reabilitação', 'Função mastigatória'],
+  },
   {
     id: 'caso-1',
     treatment: 'Lentes de contato dental',
@@ -327,15 +357,6 @@ export const successCases: SuccessCase[] = [
     summary:
       'Reanatomização de 10 dentes superiores com fechamento de diastema e correção de desgaste no incisivo central.',
     tags: ['Estética', 'Mínimo desgaste'],
-  },
-  {
-    id: 'caso-2',
-    treatment: 'Reabilitação com implantes',
-    duration: '5 meses',
-    sessions: '7 sessões',
-    summary:
-      'Substituição de prótese removível por protocolo fixo sobre 6 implantes, com carga imediata no dia da cirurgia.',
-    tags: ['Reabilitação', 'Carga imediata'],
   },
   {
     id: 'caso-3',

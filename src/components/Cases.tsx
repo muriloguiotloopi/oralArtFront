@@ -15,19 +15,37 @@ export default function Cases() {
       <div className="container-page">
         <SectionHeading
           eyebrow="Protocolos"
-          title="Cada caso tem um"
-          accent="plano próprio"
-          description="Exemplos de tratamentos completos conduzidos pela nossa equipe: as etapas, o tempo e o número de sessões envolvidos. O diagnóstico é sempre individual e presencial."
+          title="Nossa especialidade é a"
+          accent="reabilitação oral"
+          description="Devolver mastigação, fala e estética à boca inteira é o foco da clínica — e o protocolo em destaque abaixo é o que mais conduzimos. Os demais seguem o mesmo método: etapas, tempo e número de sessões definidos antes de começar. O diagnóstico é sempre individual e presencial."
         />
 
         <div className="mt-20 grid gap-px border border-white/8 bg-white/8 lg:grid-cols-2">
           {successCases.map((item, index) => (
-            <article key={item.id} className="flex flex-col bg-noir-950 p-8 sm:p-10">
+            <article
+              key={item.id}
+              className={`relative flex flex-col p-8 sm:p-10 ${
+                item.featured
+                  ? 'bg-[linear-gradient(180deg,rgba(201,162,39,0.10),rgba(8,8,7,1)_65%)] lg:col-span-2'
+                  : 'bg-noir-950'
+              }`}
+            >
+              {item.featured ? (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"
+                />
+              ) : null}
+
               <span className="font-sans text-[0.58rem] tracking-[0.26em] text-gold-500 uppercase">
                 Protocolo {String(index + 1).padStart(2, '0')}
               </span>
 
-              <h3 className="mt-6 font-display text-[1.9rem] leading-tight text-cream-50">
+              <h3
+                className={`mt-6 font-display leading-tight text-cream-50 ${
+                  item.featured ? 'text-[2.3rem] sm:text-[2.9rem]' : 'text-[1.9rem]'
+                }`}
+              >
                 {item.treatment}
               </h3>
 
@@ -42,9 +60,26 @@ export default function Cases() {
                 ))}
               </div>
 
-              <p className="mt-5 flex-1 text-sm leading-[1.95] font-light text-cream-500">
+              <p
+                className={`mt-5 flex-1 leading-[1.95] font-light text-cream-500 ${
+                  item.featured ? 'max-w-3xl text-base' : 'text-sm'
+                }`}
+              >
                 {item.summary}
               </p>
+
+              {item.steps ? (
+                <ol className="mt-9 grid gap-x-10 gap-y-4 border-t border-white/8 pt-8 sm:grid-cols-2 lg:grid-cols-3">
+                  {item.steps.map((step, stepIndex) => (
+                    <li key={step} className="flex gap-3.5">
+                      <span className="font-display text-base text-gold-600 italic">
+                        {String(stepIndex + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-sm leading-[1.7] font-light text-cream-300">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              ) : null}
 
               <dl className="mt-8 flex gap-10 border-t border-white/8 pt-6">
                 <div>
