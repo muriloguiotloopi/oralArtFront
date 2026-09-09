@@ -6,7 +6,7 @@ import { externalLinkProps, whatsappServiceLink } from '../lib/links'
 
 export default function Services() {
   return (
-    <section id="servicos" className="section-y relative bg-noir-900">
+    <section className="section-y relative bg-noir-900">
       <div className="container-page">
         {/* selos de confiança — filete tipográfico, sem caixas */}
         <ul className="grid grid-cols-2 gap-y-8 border-y border-white/8 py-8 lg:grid-cols-4">
@@ -28,7 +28,7 @@ export default function Services() {
           })}
         </ul>
 
-        <div className="mt-24">
+        <div id="servicos" className="mt-24">
           <SectionHeading
             eyebrow="Tratamentos"
             title="Especialidades para cada etapa do"
